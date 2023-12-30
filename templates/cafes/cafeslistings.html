@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}All these possibilities{% endblock %}
+
+{% block content %}
+
+  <div class="container">
+
+    <h1>All these possibilities</h1>
+
+    {% for cafe in cafes %}
+      {% include '/cafes/_cafe.html' %}
+    {% endfor %}
+
+  </div>
+
+{% endblock %}

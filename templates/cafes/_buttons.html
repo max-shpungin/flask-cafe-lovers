@@ -1,0 +1,13 @@
+{% if current_user.is_authenticated %}
+  {% if cafe not in current_user.loves_cafes %}
+    <form method="post" action="/cafes/{{ cafe.id }}/love">
+      {{ g.csrf_form.hidden_tag() }}
+      <button class="btn btn-primary">Love it!</button>
+    </form>
+  {% else %}
+    <form method="post" action="/cafes/{{ cafe.id }}/unlove">
+      {{ g.csrf_form.hidden_tag() }}
+      <button class="btn btn-danger">&lt;/3</button>
+    </form>
+  {% endif %}
+{% endif %}

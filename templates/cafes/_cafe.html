@@ -1,0 +1,26 @@
+<div class="container">
+  <h1><a href="{{ url_for('cafe', cafe_id=cafe.id) }}">{{ cafe.name }}</a></h1>
+
+  <img class="cafe-image" src="/static/placeholder.jpg" alt="cafe image">
+
+  <div class="row">
+    <div class="col">
+      <h2>Address</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <p id="street">{{ cafe.address_street }}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p id="state">{{ cafe.address_state }}</p>
+    </div>
+  </div>
+  <!-- LOVE OR UNLOVE CAFE -->
+  <div class="row">
+    {% include '/cafes/_buttons.html' %}
+  </div>
+</div>

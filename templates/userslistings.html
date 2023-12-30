@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}All the cool kids{% endblock %}
+
+{% block content %}
+  <h1>All the cool kids</h1>
+
+  <div class="container">
+    {% for user in users %}
+      <div class="user-container">
+        <a href="/users/{{ user.username }}">{{ user.username }}</a>
+      </div>
+    {% endfor %}
+  </div>
+
+  <a href="{{ url_for('signup') }}">Don't have an account? Signup</a>
+
+{% endblock %}

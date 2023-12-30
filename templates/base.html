@@ -18,6 +18,7 @@
   <!-- JQUERY -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
+  <link rel="stylesheet" href="/static/style.css">
 </head>
 
 <body>
@@ -25,37 +26,86 @@
   <nav class="navbar">
     <div class="container-fluid">
 
-      <a class="navbar-brand" href="#">Cafe &lt;3</a>
+      <a class="navbar-brand" href="{{ url_for('home') }}">Cafe &lt;3</a>
 
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Users</a>
+          <a class="nav-link active" aria-current="page" href="/users">Users</a>
         </li>
       </ul>
 
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Cafes</a>
+          <a class="nav-link active" aria-current="page" href="/cafes">Cafes</a>
         </li>
       </ul>
 
+      <!-- display login/signup for anonymous users -->
+      {% if current_user.is_anonymous %}
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active"
+              aria-current="page"
+              href="{{ url_for('login') }}">Login</a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active"
+              aria-current="page"
+              href="{{ url_for('signup') }}">Signup</a>
+          </li>
+        </ul>
+
+      <!-- display logout button for logged in users -->
+      {% else %}
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Login</a>
+          <a class="nav-link active"
+            aria-current="page"
+            href="{{ url_for('cafes_add') }}">Add Cafe</a>
         </li>
       </ul>
 
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Signup</a>
-        </li>
-      </ul>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active"
+              aria-current="page"
+              href="{{ url_for('logout') }}">Logout</a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active"
+              aria-current="page"
+              href="#">{{ current_user.username }}</a>
+          </li>
+        </ul>
+
+      {% endif %}
 
     </div>
   </nav>
 
+  <div class="container">
+    {% for category, message in get_flashed_messages(with_categories=true) %}
+      <div class="alert alert-{{ category }}">{{ message }} </div>
+    {% endfor %}
+  </div>
+
   {% block content %}
   {% endblock %}
 
+  <!-- //FIXME: probably NEED TO PASS API KEY FROM SERVER INSTEAD OF DIRECT IN JS -->
+  <!-- GOOGLE MAPS -->
+  <!--  -->
+  <script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4-tO33_nmB-q4OdO5jlDAggcvygw7CRU&callback=initMap&libraries=places&v=weekly"
+  defer
+></script>
+  <!-- END GOOGLE MAPS -->
+  <script src="/static/app.js"></script>
 </body>
 </html>

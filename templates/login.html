@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Halt! Who goes there?{% endblock %}
+
+{% block content %}
+  <h1>Halt! Who goes there?</h1>
+
+  <div class="container">
+    {% include '_form.html' %}
+  </div>
+
+  <a href="{{ url_for('signup') }}">Don't have an account? Signup</a>
+
+{% endblock %}

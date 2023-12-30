@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Halt! Who goes there?{% endblock %}
+
+{% block content %}
+  <h1>{{ user.username }}'s profile</h1>
+ <br>
+  <img class="user-image" src="/static/placeholder_user.jpg" alt="user image">
+ <br>
+  <h1> Some of {{ user.username }}'s favorite places</h1>
+  {% for cafe in user.loves_cafes %}
+    {% include '/cafes/_cafe.html' %}
+  {% endfor %}
+
+{% endblock %}

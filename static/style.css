@@ -1,0 +1,38 @@
+/******************************************************************************/
+/* GOOGLE MAPS */
+/**
+ * @license
+ * Copyright 2019 Google LLC. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0
+ */
+/*
+ * Always set the map height explicitly to define the size of the div element
+ * that contains the map.
+ */
+ #map {
+  height: 50%;
+  width: 50%;
+}
+
+html,
+body {
+  height: 100%;
+
+}
+
+.map-container {
+  height: 100%;
+
+}
+/* END GOOGLE MAPS */
+/******************************************************************************/
+
+/* Images */
+.user-image{
+  border-radius: 8px;
+  width: 100px;
+}
+.cafe-image{
+  border-radius: 8px;
+  width: 200px;
+}

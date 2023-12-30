@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Add a cafe to the listings{% endblock %}
+
+{% block content %}
+  <h1>Add a cafe to the listings</h1>
+
+  <div class="container">
+    {% include '_form.html' %}
+  </div>
+
+  <!-- <a href="{{ url_for('login') }}">Already have an account? Login</a> -->
+
+{% endblock %}

@@ -4,4 +4,23 @@
 
 {% block content %}
 <h1>Look at all this coffee. Look I said.</h1>
+
+<br>
+
+<h2>Some of our coolest people</h2>
+
+<ul>
+  {% for user in users %}
+    <li> <a href="{{ url_for('dashboard', username=user.username) }}">{{ user.username }}</a></li>
+  {% endfor %}
+</ul>
+
+<h2>Some of our tastiest places</h2>
+
+<ul>
+  {% for cafe in cafes %}
+    <li> <a href="{{ url_for('cafe', cafe_id=cafe.id) }}">{{ cafe.name }}</a></li>
+  {% endfor %}
+</ul>
+
 {% endblock %}
