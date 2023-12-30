@@ -23,6 +23,8 @@ app.config['SECRET_KEY'] = os.environ['SECRET_KEY']
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 app.config["SQLALCHEMY_ECHO"] = True
 
+gmaps_api_url = os.environ['GMAPS_API_URL']
+
 connect_db(app)
 
 debug = DebugToolbarExtension(app)  # TODO:
@@ -35,17 +37,20 @@ login_manager.login_view = 'login'
 
 ################################################################################
 # session handling
-
-
 @app.before_request
 def add_csrf_form():
     """ add csrf form to global g for use in templates """
     g.csrf_form = CSRFProtection()
 
+@app.before_request
+def load_api_keys():
+    """ load api keys needed for front end js """
+    g.gmaps_api_url = gmaps_api_url
 
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(user_id)
+
 
 ################################################################################
 # Anon / Signup / Login / Dashboard

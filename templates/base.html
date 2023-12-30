@@ -94,15 +94,15 @@
       <div class="alert alert-{{ category }}">{{ message }} </div>
     {% endfor %}
   </div>
-
   {% block content %}
   {% endblock %}
 
-  <!-- //FIXME: probably NEED TO PASS API KEY FROM SERVER INSTEAD OF DIRECT IN JS -->
+
+  <!-- //FIXME: probably need to do this server side to not expose key to client -->
   <!-- GOOGLE MAPS -->
   <!--  -->
   <script
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4-tO33_nmB-q4OdO5jlDAggcvygw7CRU&callback=initMap&libraries=places&v=weekly"
+  src="{{ g.gmaps_api_url }}"
   defer
 ></script>
   <!-- END GOOGLE MAPS -->
